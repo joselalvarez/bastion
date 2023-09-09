@@ -1,0 +1,27 @@
+micronaut:
+  server:
+    port: ${SERVICE_PORT:9002}
+  application:
+    name: keycloak-message-consumer
+infinispan:
+  client:
+    hotrod:
+      marshaller: org.jl.bastion.cache.util.CustomMarshaller
+      server:
+        host: ${CACHE_IP:localhost}
+        port: ${CACHE_PORT:11222}
+      security:
+        authentication:
+          enabled: true
+          username: ${CACHE_USERNAME:admin}
+          password: ${CACHE_PASSWORD:admin}
+      cache:
+        name: ${CACHE_NAME:userinfo}
+        config-file: ${CACHE_FILE_CONFIG:`classpath:infinispan.xml`}
+
+kafka:
+  bootstrap:
+    servers: ${KAFKA_BOOTSTRAP_SERVERS:`localhost:9092`}
+
+user-update:
+  topic: ${USER_UPDATE_TOPIC:kc-user-update}

@@ -1,0 +1,39 @@
+micronaut:
+  server:
+    port: ${SERVICE_PORT:9001}
+    thread-selection: IO
+  application:
+    name: clinical-info-service
+  security:
+    token:
+      jwt:
+        signatures:
+          jwks:
+            auth0:
+              url: http://${KEYCLOAK_ADDRESS:`localhost:8080`}/realms/${REALM_NAME:bastion}/protocol/openid-connect/certs
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+infinispan:
+  client:
+    hotrod:
+      marshaller: org.jl.bastion.patient.util.CustomMarshaller
+      server:
+        host: ${CACHE_IP:localhost}
+        port: ${CACHE_PORT:11222}
+      security:
+        authentication:
+          enabled: true
+          username: ${CACHE_USERNAME:admin}
+          password: ${CACHE_PASSWORD:admin}
+      cache:
+        name: ${CACHE_NAME:userinfo}
+        config-file: ${CACHE_FILE_CONFIG:`classpath:infinispan.xml`}
+
+userinfo:
+  address: http://${KEYCLOAK_ADDRESS:`localhost:8080`}
+  realm: ${REALM_NAME:bastion}
+
+

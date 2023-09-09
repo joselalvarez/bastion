@@ -1,0 +1,6 @@
+applicationType: messaging
+defaultPackage: org.jl.bastion.cache
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: maven
+features: [app-name, cache-infinispan, http-client-test, junit, kafka, kapt, kotlin, kotlin-application, logback, maven, maven-enforcer-plugin, readme, serialization-jackson, shade, test-resources, yaml, yaml-build]
