@@ -90,14 +90,14 @@ $ terraform init
 $ terraform apply
 ```
 
-Una vez deplegado el cluster, podemmos ir a la consolas de Nomad y Consul para ver que todo esta correctamente desplegado:
+Una vez deplegado el cluster, podemos ir a la consolas de Nomad y Consul para ver que todo esta correctamente desplegado:
 
 ![Cluster](https://github.com/joselalvarez/bastion/blob/main/_imgs/cluster-1.png?raw=true)
 ![Cluster](https://github.com/joselalvarez/bastion/blob/main/_imgs/cluster-2.png?raw=true)
 
 ### Obtener token de acceso e invocación del servicio *clinical-info-service*
 
-Durante el despliegue del *Keycloak* se importa automáticamente un *realm* llamado "bastion", dentro de cual ya vienen preconfigurados un par de usuarios llamados "user1" y "user2" (con los passwords "user1" y "user2" respectivamente), estos usuarios tambien tienen definidos los atributos "cip" y "tlf". Existe también un cliente llamado "bastion-cli" con los respectivos mapeos de los atributos de usuario indicados anteriormente al endpoint *userinfo* (**Los mapeos al ID token y al access token están deshabilitados para que el acceso a esos datos solo se pueda realizar mediante la invocación al endpoint**):
+Durante el despliegue del *Keycloak* se importa automáticamente un *realm* llamado "bastion", dentro de cual ya vienen preconfigurados un par de usuarios llamados "user1" y "user2" (con los passwords "user1" y "user2" respectivamente), estos usuarios también tienen definidos los atributos "cip" y "tlf". Existe también un cliente llamado "bastion-cli" con los respectivos mapeos de los atributos de usuario indicados anteriormente al endpoint *userinfo* (**Los mapeos al ID token y al access token están deshabilitados para que el acceso a esos datos solo se pueda realizar mediante la invocación al endpoint**):
 
 ![Cluster](https://github.com/joselalvarez/bastion/blob/main/_imgs/cluster-3.png?raw=true)
 
@@ -158,7 +158,7 @@ Si accedemos a la consola de la caché *Infinispan* (*http://127.0.0.1:11222/con
 
 ![Cluster](https://github.com/joselalvarez/bastion/blob/main/_imgs/cluster-4.png?raw=true)
 
-Si comprobamos los logs del servicio tambien podemos ver que solo se invoca al endpoint *userinfo* la primera vez:
+Si comprobamos los logs del servicio también podemos ver que solo se invoca al endpoint *userinfo* la primera vez:
 
 ```
 18:03:31.794 [io-executor-thread-1] INFO  o.j.b.p.service.UserInfoService - Getting UserInfo for subject: 'dbfcd8d1-f119-4c89-9409-544382abb11b' <<< Invocación al endpoint userinfo
